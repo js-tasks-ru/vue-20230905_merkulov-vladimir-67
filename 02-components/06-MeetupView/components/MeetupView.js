@@ -41,7 +41,9 @@ export default defineComponent({
                {{ meetup_item }}
             <h3>Программа</h3>
             <!-- meetup agenda -->              
-            <div v-if ="this.meetup.agenda === null || this.meetup.agenda === ''"><UiAlert>Программа пока пуста...</UiAlert></div>
+            <div v-if ="this.meetup.agenda == null || this.meetup.agenda == '' || this.meetup.agenda == []">
+              <UiAlert>Программа пока пуста...</UiAlert>
+            </div>
             <div v-else><MeetupAgenda :agenda="this.meetup.agenda" /></div>   
           </div>
           <div class="meetup__aside">
