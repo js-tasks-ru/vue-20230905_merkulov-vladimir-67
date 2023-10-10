@@ -21,9 +21,14 @@ export default defineComponent({
   methods: {   
      formatDate(date) {  
          const options = { year: 'numeric', month: 'long', day: 'numeric' } 
-         return new Date(date).toLocaleDateString('ru', options)
+         return new Date(date).toLocaleDateString(navigator.language, options)
             }, 
+     formatDateISO(date) {  
+             return new Date(date).toISOString().substring(0,10);
+            },        
          },
+ 
+      //    },   
 
   template: `
     <ul class="meetup-info">
@@ -37,7 +42,7 @@ export default defineComponent({
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-        <time >{{ formatDate(date) }}</time>
+        <time v-bind:datetime ="formatDateISO(this.date)">{{ formatDate(this.date) }}</time>
       </li>
     </ul>`,
 });
