@@ -14,7 +14,7 @@ export default defineComponent({
         return '/assets/icons/icon-'.concat(agendaItemIcons[`${t}`], '.svg');
         },  
         getTitle(t) { 
-          return agendaItemDefaultTitles[`${t}`];
+           return agendaItemDefaultTitles[`${t}`];
         },  
 
     },
