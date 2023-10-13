@@ -14,8 +14,8 @@ export default defineComponent({
   name: 'PageMeetup', 
   data() {
     return {
-      meetup: Object, 
-      error: Object,
+      meetup: null, 
+      error: null,
       isLoading : false,
       isError : false,
     };
@@ -50,13 +50,11 @@ export default defineComponent({
       this.isLoading=true; 
       this.isError=false;        
        fetchMeetupById(t).then((result) => {
-         console.log(result); // => success!
          this.meetup = result
          this.isLoading=false;  
              return result;
        },
        (error) =>{
-        console.log(error); // => error!
          this.error = error;
          this.isError = true;
          return error;

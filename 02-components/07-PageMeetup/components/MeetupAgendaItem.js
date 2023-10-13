@@ -7,14 +7,16 @@ export default defineComponent({
 
   props: { 
     agendaItem:{
-     },  
+      type: Array,
+      required: true,
+    },  
     },
     methods: {
         getImageUrl(t) { 
         return '/assets/icons/icon-'.concat(agendaItemIcons[`${t}`], '.svg');
         },  
         getTitle(t) { 
-           return agendaItemDefaultTitles[`${t}`];
+          return agendaItemDefaultTitles[`${t}`];
         },  
 
     },
@@ -30,7 +32,7 @@ export default defineComponent({
         <h3 class="agenda-item__title" v-if="agendaItem.title != null">{{ agendaItem.title }}</h3>
         <h3 class="agenda-item__title" v-else > {{ getTitle(agendaItem.type) }}</h3>
         <p class="agenda-item__talk" v-if="agendaItem.type === 'talk'">
-           <span class="agenda-item__dot"> {{ agendaItem.speaker }} </span>  
+          <span class="agenda-item__dot"> {{ agendaItem.speaker }} </span>  
           <span class="agenda-item__lang"> {{ agendaItem.language }} </span>
         </p>
         <p v-if="agendaItem.description !=null">{{ agendaItem.description }}</p>

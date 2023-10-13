@@ -7,6 +7,8 @@ export default defineComponent({
 
   props: { 
     agendaItem:{
+      type: Array,
+      required: true,
     },  
     },
     methods: {
@@ -24,7 +26,7 @@ export default defineComponent({
     <div class="agenda-item">
       <div class="agenda-item__col">
         <img v-bind:src="getImageUrl(\`\${agendaItem.type}\`)"   class="icon"  /> 
-       </div>
+      </div>
       <div class="agenda-item__col">{{ agendaItem.startsAt }} - {{ agendaItem.endsAt }}</div>
       <div class="agenda-item__col"> 
         <h3 class="agenda-item__title" v-if="agendaItem.title != null">{{ agendaItem.title }}</h3>

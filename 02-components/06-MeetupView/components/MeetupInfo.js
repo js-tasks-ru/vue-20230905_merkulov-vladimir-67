@@ -28,7 +28,6 @@ export default defineComponent({
             },        
          },
  
-      //    },   
 
   template: `
     <ul class="meetup-info">
@@ -42,7 +41,7 @@ export default defineComponent({
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-        <time v-bind:datetime ="formatDateISO(this.date)">{{ formatDate(this.date) }}</time>
+        <time v-bind:datetime ="formatDateISO(date)">{{ formatDate(date) }}</time>
       </li>
     </ul>`,
 });
