@@ -13,21 +13,32 @@ export default defineComponent({
       required: false,
     }
   },
-  methods: {
-    getImageUrl(t) { 
-      if ( `${t}` != 'undefined' ){
-        return '--bg-url: url(' + `${t}` + ')';
-      } else {
-        return  undefined;
-      }
-    },  
+  computed: {
+    getImageUrl: function() { 
+     // return '/assets/icons/icon-' + agendaItemIcons[this.agendaItem.type] + '.svg';
+     if ( this.image != undefined ){
+      return '--bg-url: url(' + this.image + ')';
+    } else {
+      return  undefined;
+    }
+    }, 
+  },
+//   methods: {
+//     getImageUrl(t) { 
+//       if ( `${t}` != 'undefined' ){
+//         return '--bg-url: url(' + `${t}` + ')';
+//       } else {
+//         return  undefined;
+//       }
+//     },  
 
-},
+// },
 
 
   template: `
 
-   <div class="meetup-cover" :style="getImageUrl(\`\${image}\`)" >
+        <div class="meetup-cover" :style="getImageUrl" >
+  <!-- <div class="meetup-cover" :style="getImageUrl(\`\${image}\`)" > -->
   <!-- <div class="meetup-cover" v-if="image != null" :style="getImageUrl(\`\${image}\`)" > -->
         <!-- <div class="meetup-cover" style="--bg-url: url('https://course-vue.javascript.ru/api/images/2')" class=image> -->
         <!-- Ссылка выше - пример верстки при наличии изображения, а не изображение по умолчанию. -->

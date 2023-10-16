@@ -5,8 +5,10 @@ import  MeetupAgendaItem  from './MeetupAgendaItem.js';
 export default defineComponent({
   name: 'MeetupAgenda',
   props: {
-    agenda: Array,
-    required: true,
+    agenda: {
+    type: Array,
+    required: true
+    },
   },
   components: {
       MeetupAgendaItem,
@@ -14,11 +16,9 @@ export default defineComponent({
   
   template: `
     <ul class="agenda">
-      <li class="agenda__item">
+      <li class="agenda__item" v-for="agenda_item of agenda">
         <!-- meetup agenda item -->
-      <!-- <div v-for="agenda_item of agenda"> -->
-        <MeetupAgendaItem :agenda-item="agenda_item" v-for="agenda_item of agenda"/>
-      <!-- </div> -->
+        <MeetupAgendaItem :agenda-item="agenda_item" />
       </li>
     </ul>`,
 });
