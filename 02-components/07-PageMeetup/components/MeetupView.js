@@ -25,32 +25,34 @@ export default defineComponent({
       type: Object,
       required: true,
     },
-   
-  },
+ },
+
 
   template: `
     <div >
       <!-- meetup cover-->
       <MeetupCover :title="this.meetup.title" :image="this.meetup.image"/>
+      <!-- <MeetupCover :title="meetupWithoutImage.title" :image="meetupWithoutImage.image" />-->
+
       <UiContainer>
         <div class="meetup">
           <div class="meetup__content">
             <!--  <h3>Описание</h3>-->
             <!-- meetup description -->
-            <h3><MeetupDescription :description="this.meetup.description"/></h3>
+            <h3><MeetupDescription :description="meetup.description"/></h3>
                {{ meetup_item }}
             <h3>Программа</h3>
             <!-- meetup agenda -->              
-              <UiAlert v-if ="meetup.agenda.length == false">Программа пока пуста...</UiAlert>
-              <MeetupAgenda :agenda="this.meetup.agenda" v-else />   
+            <div v-if ="meetup.agenda === null || meetup.agenda === ''"><UiAlert>Программа пока пуста...</UiAlert></div>
+            <div v-else><MeetupAgenda :agenda="meetup.agenda" /></div>   
           </div>
           <div class="meetup__aside">
         
             <!-- meetup info -->
             <MeetupInfo
-            :organizer="this.meetup.organizer"
-            :place="this.meetup.place"
-            :date="this.meetup.date" 
+            :organizer="meetup.organizer"
+            :place="meetup.place"
+            :date="meetup.date" 
           />
           </div>
         </div>
