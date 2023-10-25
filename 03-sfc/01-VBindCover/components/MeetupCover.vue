@@ -19,8 +19,12 @@ export default {
     }
   },
   computed: {
-    getImageUrl: function() { 
+    getImageUrl: function() {       
+       if ( this.image != undefined ){
         return ' url(' + this.image + ')';
+    } else {
+      return  'var(--default-cover)';
+    }
     }, 
   },
 };
