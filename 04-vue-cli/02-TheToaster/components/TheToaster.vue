@@ -1,13 +1,13 @@
 <template>
-  <div class="toasts">
-    <div class="toast toast_success">
+<div class="toasts" v-for="toast in toasts">
+    <div class="toast toast_success" v-if = "toast.type == 'success'">
       <UiIcon class="toast__icon" icon="check-circle" />
-      <span>Success Toast Example</span>
+      <span> {{ toast.message }}</span>
     </div>
 
-    <div class="toast toast_error">
+    <div class="toast toast_error" v-if="toast.type == 'error'">
       <UiIcon class="toast__icon" icon="alert-circle" />
-      <span>Error Toast Example</span>
+      <span> {{ toast.message }}</span>
     </div>
   </div>
 </template>
@@ -17,6 +17,29 @@ import UiIcon from './UiIcon.vue';
 
 export default {
   name: 'TheToaster',
+
+  data() {
+    return {
+      toasts:[]     
+      }
+    
+  
+},
+methods: {
+      success: function(t)  {
+        this.toasts.push({'message': t, 'type': 'success', 'time': new Date()});
+        setTimeout(() => this.removeToast(),5000);
+        console.log(this.toasts.length);      
+      },
+      error: function(t) { 
+        this.toasts.push({'message': t, 'type': 'error', 'time': new Date()});
+        setTimeout(() => this.removeToast(),5000);
+        console.log(this.toasts.length);    
+      }, 
+      removeToast() {
+      this.toasts.shift();
+    }
+    },
 
   components: { UiIcon },
 };
@@ -56,6 +79,9 @@ export default {
 }
 
 .toast + .toast {
+  margin-top: 20px;
+}
+.toasts + .toasts {
   margin-top: 20px;
 }
 
